@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package edu.stu.cipher.model;
 
-/**
- *
- * @author Vuong
- */
-import java.util.Scanner;
+// Kế thừa từ CipherBase
+import edu.stu.cipher.model.CipherBase;
 
-public class Playfair extends CipherBase{
+public class Playfair extends CipherBase {
     
     public String[][] sinhKey(String key) { // Xử lý key sinh ra ma trận 5x5
         String[][] keyMatrix = new String[5][5];
@@ -103,7 +96,8 @@ public class Playfair extends CipherBase{
         }
         return null;
     }
-
+    
+    @Override
     public String encrypt(String text, String key) { // Mã hóa Playfair
         String result = new String(); // Khởi tạo kết quả
         String[][] genarateKey = sinhKey(key); // Khởi tạo ma trận key đã xử lý
@@ -135,6 +129,7 @@ public class Playfair extends CipherBase{
         return result.toString();
     }
         
+    @Override
     public String decrypt(String text, String key) { // Giải mã Playfair
         String result = new String();
         String[][] genarateKey = sinhKey(key); // Khởi tạo ma trận key đã xử lý
@@ -164,9 +159,10 @@ public class Playfair extends CipherBase{
             indexGenarateText++;
         }
 
-        return result.toString();
+        return result;
     }
 
+    @Override
     public String getName() {
         return "Playfair";
     }
