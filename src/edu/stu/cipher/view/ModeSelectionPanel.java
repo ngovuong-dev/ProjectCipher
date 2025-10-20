@@ -5,7 +5,9 @@
 package edu.stu.cipher.view;
 
 import edu.stu.cipher.view.viewModel.CaesarPanel;
+import edu.stu.cipher.view.viewModel.VengenerePanel;
 import edu.stu.cipher.view.viewModel.PlayfairPanel;
+import edu.stu.cipher.view.viewModel.ShiftPanel;
 
 /**
  *
@@ -33,6 +35,8 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         btnHome = new javax.swing.JButton();
         btnCaesar = new javax.swing.JButton();
         btnPlayfair = new javax.swing.JButton();
+        btnVengenere = new javax.swing.JButton();
+        btnShift = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,6 +80,32 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
             }
         });
 
+        btnVengenere.setBackground(new java.awt.Color(51, 51, 255));
+        btnVengenere.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnVengenere.setForeground(new java.awt.Color(255, 255, 255));
+        btnVengenere.setText("Vengenere");
+        btnVengenere.setBorderPainted(false);
+        btnVengenere.setFocusPainted(false);
+        btnVengenere.setVerifyInputWhenFocusTarget(false);
+        btnVengenere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVengenereActionPerformed(evt);
+            }
+        });
+
+        btnShift.setBackground(new java.awt.Color(51, 51, 255));
+        btnShift.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnShift.setForeground(new java.awt.Color(255, 255, 255));
+        btnShift.setText("Shift");
+        btnShift.setBorderPainted(false);
+        btnShift.setFocusPainted(false);
+        btnShift.setVerifyInputWhenFocusTarget(false);
+        btnShift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShiftActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,11 +115,18 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(511, Short.MAX_VALUE))
+                    .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(123, 123, 123)
+                            .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42)
+                .addComponent(btnShift, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,10 +134,14 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShift, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,10 +160,22 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         main.showPanel(new PlayfairPanel(main));
     }//GEN-LAST:event_btnPlayfairActionPerformed
 
+    private void btnVengenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVengenereActionPerformed
+        // TODO add your handling code here:
+        main.showPanel(new VengenerePanel(main));
+    }//GEN-LAST:event_btnVengenereActionPerformed
+
+    private void btnShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShiftActionPerformed
+        // TODO add your handling code here:
+        main.showPanel(new ShiftPanel(main));
+    }//GEN-LAST:event_btnShiftActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCaesar;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPlayfair;
+    private javax.swing.JButton btnShift;
+    private javax.swing.JButton btnVengenere;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@ package edu.stu.cipher.model;
 
 import edu.stu.cipher.model.CipherBase;
 
-public class SimpleSubstitutionCipher extends CipherBase {
+public class MonoCipher extends CipherBase {
     // bang ma ban dau
     static String VSCII = "abcdefghijklmnopqrstuvwxyz";
     // key 

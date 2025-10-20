@@ -1,50 +1,30 @@
 package edu.stu.cipher.view.viewModel;
 
-import edu.stu.cipher.model.PlayfairCipher;
+import edu.stu.cipher.model.ShiftCipher;
 import edu.stu.cipher.view.MainFrame;
 import edu.stu.cipher.view.ModeSelectionPanel;
 
-public class PlayfairPanel extends javax.swing.JPanel {
-
+public class ShiftPanel extends javax.swing.JPanel {
     private MainFrame main; // Khai báo frame chính
-    private PlayfairCipher cipher; // Khai báo mã hóa
+    private ShiftCipher cipher; // Khai báo mã hóa
     private Boolean flagsEncrypt = true; // Đặt cờ để biết mã hóa hay giải mã
     private String text = "";
     private String key = "";
-    private String[][] generateKey = new String[5][5];
-    private String result = "!! Result Playfair Cipher !!";
+    private String result = "!! Result Shift Cipher !!";
     /**
-     * Creates new form PlayfairPanel
+     * Creates new form ShiftPanel
      */
-    public PlayfairPanel(MainFrame main) {
+    public ShiftPanel(MainFrame main) {
         this.main = main;
-        cipher = new PlayfairCipher();
+        cipher = new ShiftCipher();
         initComponents();
+        syncEncryptDecrypt();
         txtAreaResult.setText(result);
     }
-    
+
     public void syncEncryptDecrypt() {
         checkBoxEncrypt.setSelected(flagsEncrypt);
         checkBoxDecrypt.setSelected(!flagsEncrypt);
-    }
-    
-    public void printGenerateKey() {
-        generateKey = cipher.sinhKey(key);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                // Thêm String từ mảng
-                sb.append(generateKey[i][j]);
-                // Thêm một ký tự TAB (\t) để căn chỉnh các cột
-                sb.append("\t"); 
-            }
-            // 5. Thêm ký tự xuống dòng (ENTER) sau khi hết một hàng
-            sb.append("\n");
-        }
-        // 6. Lấy chuỗi kết quả cuối cùng
-        String keyMatrixString = sb.toString();
-        // 7. "In" chuỗi ra JTextArea
-        txtAreaGenerateKey.setText(keyMatrixString);
     }
     
     /**
@@ -67,13 +47,9 @@ public class PlayfairPanel extends javax.swing.JPanel {
         checkBoxDecrypt = new javax.swing.JCheckBox();
         btnRun = new javax.swing.JButton();
         DSMenu01 = new javax.swing.JPanel();
+        lblKey = new javax.swing.JLabel();
         scrollKey = new javax.swing.JScrollPane();
         txtAreaKey = new javax.swing.JTextArea();
-        lblKey = new javax.swing.JLabel();
-        DSMenuGenarateKey = new javax.swing.JPanel();
-        lblGenerateKey = new javax.swing.JLabel();
-        scrollGenerateKey = new javax.swing.JScrollPane();
-        txtAreaGenerateKey = new javax.swing.JTextArea();
         DSTitle01 = new javax.swing.JPanel();
         DSTitle02 = new javax.swing.JPanel();
         DSEnterText = new javax.swing.JPanel();
@@ -119,7 +95,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
 
         titleCipher.setFont(new java.awt.Font("Segoe UI Black", 1, 55)); // NOI18N
         titleCipher.setForeground(new java.awt.Color(255, 255, 255));
-        titleCipher.setText("Playfair");
+        titleCipher.setText("Shift");
 
         javax.swing.GroupLayout DSTitle00Layout = new javax.swing.GroupLayout(DSTitle00);
         DSTitle00.setLayout(DSTitle00Layout);
@@ -203,6 +179,10 @@ public class PlayfairPanel extends javax.swing.JPanel {
 
         DSMenu01.setBackground(new java.awt.Color(0, 0, 0));
 
+        lblKey.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        lblKey.setForeground(new java.awt.Color(255, 255, 255));
+        lblKey.setText(" Key (int)");
+
         txtAreaKey.setBackground(new java.awt.Color(204, 204, 204));
         txtAreaKey.setColumns(20);
         txtAreaKey.setFont(new java.awt.Font("Segoe UI Black", 1, 13)); // NOI18N
@@ -213,10 +193,6 @@ public class PlayfairPanel extends javax.swing.JPanel {
         txtAreaKey.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         scrollKey.setViewportView(txtAreaKey);
 
-        lblKey.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        lblKey.setForeground(new java.awt.Color(255, 255, 255));
-        lblKey.setText(" Key (str)");
-
         javax.swing.GroupLayout DSMenu01Layout = new javax.swing.GroupLayout(DSMenu01);
         DSMenu01.setLayout(DSMenu01Layout);
         DSMenu01Layout.setHorizontalGroup(
@@ -224,7 +200,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
             .addGroup(DSMenu01Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DSMenu01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollKey)
+                    .addComponent(scrollKey, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                     .addGroup(DSMenu01Layout.createSequentialGroup()
                         .addComponent(lblKey)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -240,73 +216,26 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        DSMenuGenarateKey.setBackground(new java.awt.Color(0, 0, 0));
-
-        lblGenerateKey.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        lblGenerateKey.setForeground(new java.awt.Color(255, 255, 255));
-        lblGenerateKey.setText("Generate Key");
-
-        scrollGenerateKey.setViewportBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        txtAreaGenerateKey.setEditable(false);
-        txtAreaGenerateKey.setBackground(new java.awt.Color(204, 204, 204));
-        txtAreaGenerateKey.setColumns(5);
-        txtAreaGenerateKey.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        txtAreaGenerateKey.setForeground(new java.awt.Color(0, 0, 0));
-        txtAreaGenerateKey.setRows(5);
-        txtAreaGenerateKey.setTabSize(5);
-        txtAreaGenerateKey.setAutoscrolls(false);
-        txtAreaGenerateKey.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollGenerateKey.setViewportView(txtAreaGenerateKey);
-
-        javax.swing.GroupLayout DSMenuGenarateKeyLayout = new javax.swing.GroupLayout(DSMenuGenarateKey);
-        DSMenuGenarateKey.setLayout(DSMenuGenarateKeyLayout);
-        DSMenuGenarateKeyLayout.setHorizontalGroup(
-            DSMenuGenarateKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DSMenuGenarateKeyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollGenerateKey)
-                .addContainerGap())
-            .addGroup(DSMenuGenarateKeyLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(lblGenerateKey)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        DSMenuGenarateKeyLayout.setVerticalGroup(
-            DSMenuGenarateKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DSMenuGenarateKeyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblGenerateKey, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollGenerateKey)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout DSMenuLayout = new javax.swing.GroupLayout(DSMenu);
         DSMenu.setLayout(DSMenuLayout);
         DSMenuLayout.setHorizontalGroup(
             DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DSMenuLayout.createSequentialGroup()
-                .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(DSMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DSMenu01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(DSMenuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(DSMenuGenarateKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DSMenuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DSMenu01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(DSMenuLayout.createSequentialGroup()
-                                .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(checkBoxDecrypt)
-                                    .addComponent(checkBoxEncrypt))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DSMenuLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnRun, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                        .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(checkBoxDecrypt)
+                            .addComponent(checkBoxEncrypt))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(DSMenuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnRun, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         DSMenuLayout.setVerticalGroup(
             DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,9 +246,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 .addComponent(checkBoxEncrypt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkBoxDecrypt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DSMenuGenarateKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DSMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRun)
                     .addComponent(btnReset))
@@ -502,9 +429,8 @@ public class PlayfairPanel extends javax.swing.JPanel {
         flagsEncrypt = true;
         text = "";
         key = "";
-        result = "!! Result Playfair Cipher !!";
+        result = "!! Result Shift Cipher !!";
         syncEncryptDecrypt();
-        txtAreaGenerateKey.setText("");
         txtAreaEnterText.setText(text);
         txtAreaKey.setText(key);
         txtAreaResult.setText(result);
@@ -536,10 +462,6 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 result = "❌ Error Decrypt !!";
             }
         }
-        if (result.startsWith("✅")) {
-            printGenerateKey();
-        }
-        syncEncryptDecrypt();
         txtAreaResult.setText(result);
     }//GEN-LAST:event_btnRunActionPerformed
 
@@ -553,7 +475,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 flagsEncrypt = false;
                 try {
                     text = cipher.encrypt(text, key);
-                    result = "!! Result Playfair Cipher !!";
+                    result = "!! Result Shift Cipher !!";
                 } catch (Exception e) {
                     result = "❌ Error Swap Decrypt !!";
                 }
@@ -562,7 +484,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 flagsEncrypt = true;
                 try {
                     text = cipher.decrypt(text, key);
-                    result = "!! Result Playfair Cipher !!";
+                    result = "!! Result Shift Cipher !!";
                 } catch (Exception e) {
                     result = "❌ Error Swap Decrypt !!";
                 }
@@ -578,7 +500,6 @@ public class PlayfairPanel extends javax.swing.JPanel {
     private javax.swing.JPanel DSEnterText;
     private javax.swing.JPanel DSMenu;
     private javax.swing.JPanel DSMenu01;
-    private javax.swing.JPanel DSMenuGenarateKey;
     private javax.swing.JPanel DSResults;
     private javax.swing.JPanel DSTitle00;
     private javax.swing.JPanel DSTitle01;
@@ -592,16 +513,13 @@ public class PlayfairPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkBoxDecrypt;
     private javax.swing.JCheckBox checkBoxEncrypt;
     private javax.swing.JLabel lblEnterText;
-    private javax.swing.JLabel lblGenerateKey;
     private javax.swing.JLabel lblKey;
     private javax.swing.JLabel lblResult;
     private javax.swing.JScrollPane scrollEnterText;
-    private javax.swing.JScrollPane scrollGenerateKey;
     private javax.swing.JScrollPane scrollKey;
     private javax.swing.JScrollPane scrollResult;
     private javax.swing.JLabel titleCipher;
     private javax.swing.JTextArea txtAreaEnterText;
-    private javax.swing.JTextArea txtAreaGenerateKey;
     private javax.swing.JTextArea txtAreaKey;
     private javax.swing.JTextArea txtAreaResult;
     // End of variables declaration//GEN-END:variables

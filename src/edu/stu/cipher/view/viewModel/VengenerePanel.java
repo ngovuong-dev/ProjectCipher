@@ -1,52 +1,39 @@
 package edu.stu.cipher.view.viewModel;
 
-import edu.stu.cipher.model.PlayfairCipher;
+import edu.stu.cipher.model.VengenereCipher;
 import edu.stu.cipher.view.MainFrame;
 import edu.stu.cipher.view.ModeSelectionPanel;
 
-public class PlayfairPanel extends javax.swing.JPanel {
+public class VengenerePanel extends javax.swing.JPanel {
 
     private MainFrame main; // Khai báo frame chính
-    private PlayfairCipher cipher; // Khai báo mã hóa
+    private VengenereCipher cipher; // Khai báo mã hóa
     private Boolean flagsEncrypt = true; // Đặt cờ để biết mã hóa hay giải mã
     private String text = "";
     private String key = "";
-    private String[][] generateKey = new String[5][5];
-    private String result = "!! Result Playfair Cipher !!";
+    private String generateKey = new String();
+    private String result = "!! Result Vengenere Cipher!!";
+
     /**
-     * Creates new form PlayfairPanel
+     * Creates new form VengenerePanel
      */
-    public PlayfairPanel(MainFrame main) {
+    public VengenerePanel(MainFrame main) {
         this.main = main;
-        cipher = new PlayfairCipher();
+        cipher = new VengenereCipher();
         initComponents();
         txtAreaResult.setText(result);
     }
-    
+
     public void syncEncryptDecrypt() {
         checkBoxEncrypt.setSelected(flagsEncrypt);
         checkBoxDecrypt.setSelected(!flagsEncrypt);
     }
-    
+
     public void printGenerateKey() {
-        generateKey = cipher.sinhKey(key);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                // Thêm String từ mảng
-                sb.append(generateKey[i][j]);
-                // Thêm một ký tự TAB (\t) để căn chỉnh các cột
-                sb.append("\t"); 
-            }
-            // 5. Thêm ký tự xuống dòng (ENTER) sau khi hết một hàng
-            sb.append("\n");
-        }
-        // 6. Lấy chuỗi kết quả cuối cùng
-        String keyMatrixString = sb.toString();
-        // 7. "In" chuỗi ra JTextArea
-        txtAreaGenerateKey.setText(keyMatrixString);
+        generateKey = cipher.generateFullKey(text, key);
+        txtAreaGenerateKey.setText(generateKey);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,7 +106,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
 
         titleCipher.setFont(new java.awt.Font("Segoe UI Black", 1, 55)); // NOI18N
         titleCipher.setForeground(new java.awt.Color(255, 255, 255));
-        titleCipher.setText("Playfair");
+        titleCipher.setText("Vengenere");
 
         javax.swing.GroupLayout DSTitle00Layout = new javax.swing.GroupLayout(DSTitle00);
         DSTitle00.setLayout(DSTitle00Layout);
@@ -127,8 +114,8 @@ public class PlayfairPanel extends javax.swing.JPanel {
             DSTitle00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DSTitle00Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(titleCipher, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addComponent(titleCipher)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DSTitle00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnOption, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,7 +489,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
         flagsEncrypt = true;
         text = "";
         key = "";
-        result = "!! Result Playfair Cipher !!";
+        result = "!! Result Vengenere Cipher!!";
         syncEncryptDecrypt();
         txtAreaGenerateKey.setText("");
         txtAreaEnterText.setText(text);
@@ -553,7 +540,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 flagsEncrypt = false;
                 try {
                     text = cipher.encrypt(text, key);
-                    result = "!! Result Playfair Cipher !!";
+                    result = "!! Result Vengenere Cipher!!";
                 } catch (Exception e) {
                     result = "❌ Error Swap Decrypt !!";
                 }
@@ -562,7 +549,7 @@ public class PlayfairPanel extends javax.swing.JPanel {
                 flagsEncrypt = true;
                 try {
                     text = cipher.decrypt(text, key);
-                    result = "!! Result Playfair Cipher !!";
+                    result = "!! Result Vengenere Cipher!!";
                 } catch (Exception e) {
                     result = "❌ Error Swap Decrypt !!";
                 }

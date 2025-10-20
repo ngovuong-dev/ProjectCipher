@@ -18,11 +18,11 @@ public class CaesarPanel extends javax.swing.JPanel {
         this.main = main;
         cipher = new CaesarCipher();
         initComponents();
-        syncEncryptDecrpypt();
+        syncEncryptDecrypt();
         txtAreaResult.setText(result);
     }
     
-    public void syncEncryptDecrpypt() {
+    public void syncEncryptDecrypt() {
         checkBoxEncrypt.setSelected(flagsEncrypt);
         checkBoxDecrypt.setSelected(!flagsEncrypt);
     }
@@ -425,7 +425,7 @@ public class CaesarPanel extends javax.swing.JPanel {
         text = "";
         key = "";
         result = "!! Result Caesar Cipher !!";
-        syncEncryptDecrpypt();
+        syncEncryptDecrypt();
         txtAreaEnterText.setText(text);
         txtAreaKey.setText(key);
         txtAreaResult.setText(result);
@@ -490,7 +490,7 @@ public class CaesarPanel extends javax.swing.JPanel {
                 }
             }
         }
-        syncEncryptDecrpypt();
+        syncEncryptDecrypt();
         txtAreaEnterText.setText(text);
         txtAreaResult.setText(result);
     }//GEN-LAST:event_btnSwapActionPerformed

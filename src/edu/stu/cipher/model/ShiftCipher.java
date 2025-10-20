@@ -1,11 +1,11 @@
-package stu.edu.cipher.model;
+package edu.stu.cipher.model;
 
 import edu.stu.cipher.model.CipherBase;
 
 public class ShiftCipher extends CipherBase {
     
     @Override
-    public String encrypt(String plainText,String key){
+    public String encrypt(String plainText, String key){
         // xóa space chuyển sang kí tự thường
         plainText = plainText.replaceAll(" ", "").toLowerCase();
         key = key.toLowerCase(); // chuyển chuỗi key sang kí tự thường
@@ -48,7 +48,7 @@ public class ShiftCipher extends CipherBase {
     }
     
     @Override
-    public String decrypt(String cipherText,String key){
+    public String decrypt(String cipherText, String key){
         //xóa khoảng space và chuyển sang kí tự thường
         cipherText = cipherText.replaceAll(" ", "").toLowerCase();
         key = key.toLowerCase();
