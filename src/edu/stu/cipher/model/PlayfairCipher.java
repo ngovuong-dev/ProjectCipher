@@ -3,7 +3,7 @@ package edu.stu.cipher.model;
 // Kế thừa từ CipherBase
 import edu.stu.cipher.model.CipherBase;
 
-public class Playfair extends CipherBase {
+public class PlayfairCipher extends CipherBase {
     
     public String[][] sinhKey(String key) { // Xử lý key sinh ra ma trận 5x5
         String[][] keyMatrix = new String[5][5];
@@ -98,7 +98,7 @@ public class Playfair extends CipherBase {
     }
     
     @Override
-    public String encrypt(String text, String key) { // Mã hóa Playfair
+    public String encrypt(String text, String key) { // Mã hóa PlayfairCipher
         String result = new String(); // Khởi tạo kết quả
         String[][] genarateKey = sinhKey(key); // Khởi tạo ma trận key đã xử lý
         String[] genarateText = xuLyText(text); // Khởi tạo mảng text đã xử lý
@@ -126,11 +126,11 @@ public class Playfair extends CipherBase {
             result += genarateKey[viTriKyTu2[0]][viTriKyTu2[1]];
             indexGenarateText++;
         }
-        return result.toString();
+        return result;
     }
         
     @Override
-    public String decrypt(String text, String key) { // Giải mã Playfair
+    public String decrypt(String text, String key) { // Giải mã PlayfairCipher
         String result = new String();
         String[][] genarateKey = sinhKey(key); // Khởi tạo ma trận key đã xử lý
         String[] genarateText = xuLyText(text); // Khởi tạo mảng text đã xử lý
@@ -160,10 +160,5 @@ public class Playfair extends CipherBase {
         }
 
         return result;
-    }
-
-    @Override
-    public String getName() {
-        return "Playfair";
     }
 }
