@@ -1,59 +1,99 @@
 package edu.stu.cipher.model;
 
-import edu.stu.cipher.model.CipherBase;
-
 public class MonoCipher extends CipherBase {
     // bang ma ban dau
     static String VSCII = "abcdefghijklmnopqrstuvwxyz";
-    // key 
-     static String key = "mwgokdtlzcelcbnxhsyrpiqua";
-     
-     // Mã hóa
-    @Override
-    public String encrypt(String text, String key) {
-        // đưa văn bản về cùng kiểu chữ
-        text = text.toLowerCase();
-        // kết quả trả về
+     // HÀM TẠO KEY NGẪU NHIÊN 
+    public String taoKeyNgauNhien() {
+        char[] chars = VSCII.toCharArray(); // chuyển chuỗi thành mảng ký tự
+        int n = chars.length;
+
+        // Thuật toán trộn ngẫu nhiên (Fisher-Yates)
+        for (int i = 0; i < n; i++) {
+            int j = (int) (Math.random() * n); // chọn vị trí ngẫu nhiên
+            // hoán đổi chars[i] và chars[j]
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+        }
+
+        // Chuyển mảng ký tự đã trộn thành chuỗi
         String result = "";
-        // duyệt qua từng ký tự của văn bản mã hóa
-        for (int i = 0; i < text.length(); i++) {
-            // lấy từng kí tự trong văn bản 
-            char c = text.charAt(i);
-            // thảo mãn từng ký tự cảu văn bản mã hóa thuộc VSCII
-            if (c >= 'a' && c <= 'z') {
-                // tìm vị trí ký tự đó trong bảng chữ cái
-                int index = VSCII.indexOf(c);
-                // thay bằng ký tự tương ứng trong key
-                result += key.charAt(index);
-            } else {
-                // giữ nguyên ký tự không phải chữ
-                result += c;
-            }
+        for (int i = 0; i < n; i++) {
+            result += chars[i];
         }
         return result;
     }
-    
-    // Giải mã
+
+    // HÀM MỞ RỘNG KEY (nếu ngắn hơn 26 ký tự) 
+    public String moRongKey(String key) {
+         key = key.toLowerCase();
+        String newKey = "";
+
+        // B1: loại bỏ ký tự trùng lặp trong key người dùng nhập
+        for (int i = 0; i < key.length(); i++) {
+            char c = key.charAt(i);
+            if (c >= 'a' && c <= 'z' && newKey.indexOf(c) == -1) {
+                newKey += c;
+            }
+        }
+
+        // B2: bổ sung các ký tự còn thiếu trong bảng chữ cái
+        for (int i = 0; i < VSCII.length(); i++) {
+            char c = VSCII.charAt(i);
+            if (newKey.indexOf(c) == -1) {
+                newKey += c;
+            }
+        }
+
+        return newKey;
+    }
+
+    //  HÀM MÃ HÓA    
     @Override
-    public String decrypt(String text, String key) {
-        // đưa văn bản về cùng kiểu chữ
-        text = text.toLowerCase();
-         String result = "";
-        // duyệt qua từng ký tự của văn bản mã hóa
+    public String encrypt(String text, String key) {
+              text = text.toLowerCase();
+        String result = "";
+
         for (int i = 0; i < text.length(); i++) {
-            // lấy từng kí tự trong văn bản 
             char c = text.charAt(i);
-            // thảo mãn từng ký tự cảu văn bản mã hóa thuộc VSCII
+
             if (c >= 'a' && c <= 'z') {
-                // tìm vị trí ký tự đó trong key
-                int index = key.indexOf(c);
-                // lấy ký tự tương ứng trong bảng chữ cái gốc
-                result += VSCII.charAt(index);
+                // Tìm vị trí của ký tự trong bảng chữ cái
+                int index = VSCII.indexOf(c);
+                // Lấy ký tự tương ứng trong key
+                result += key.charAt(index);
             } else {
-                // giữ nguyên ký tự không phải chữ
+                // Giữ nguyên ký tự đặc biệt, khoảng trắng
                 result += c;
             }
         }
-        return result;    
+
+        return result;
     }
+    
+    // HÀM GIẢI MÃ 
+    @Override
+    public String decrypt(String text, String key) {
+                text = text.toLowerCase();
+        String result = "";
+
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+
+            if (c >= 'a' && c <= 'z') {
+                // Tìm vị trí của ký tự trong key
+                int index = key.indexOf(c);
+                // Lấy lại ký tự gốc từ bảng chữ cái
+                result += VSCII.charAt(index);
+            } else {
+                result += c;
+            }
+        }
+
+        return result;
+    }
+
+    
+    
 }

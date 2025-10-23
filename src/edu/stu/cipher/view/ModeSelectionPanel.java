@@ -8,6 +8,7 @@ import edu.stu.cipher.view.viewModel.CaesarPanel;
 import edu.stu.cipher.view.viewModel.VengenerePanel;
 import edu.stu.cipher.view.viewModel.PlayfairPanel;
 import edu.stu.cipher.view.viewModel.ShiftPanel;
+import edu.stu.cipher.view.viewModel.MonoPanel;
 
 /**
  *
@@ -32,33 +33,21 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnHome = new javax.swing.JButton();
         btnCaesar = new javax.swing.JButton();
         btnPlayfair = new javax.swing.JButton();
         btnVengenere = new javax.swing.JButton();
         btnShift = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        btnMono = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        btnHome.setBackground(new java.awt.Color(51, 153, 255));
-        btnHome.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome.setText("Home");
-        btnHome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255,255,255), 2, true));
-        btnHome.setBorderPainted(false);
-        btnHome.setFocusPainted(false);
-        btnHome.setVerifyInputWhenFocusTarget(false);
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(153, 153, 153));
 
         btnCaesar.setBackground(new java.awt.Color(51, 51, 255));
         btnCaesar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btnCaesar.setForeground(new java.awt.Color(255, 255, 255));
         btnCaesar.setText("Ceasar");
-        btnCaesar.setBorderPainted(false);
+        btnCaesar.setBorder(new javax.swing.border.MatteBorder(null));
         btnCaesar.setFocusPainted(false);
         btnCaesar.setVerifyInputWhenFocusTarget(false);
         btnCaesar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +60,7 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         btnPlayfair.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btnPlayfair.setForeground(new java.awt.Color(255, 255, 255));
         btnPlayfair.setText("Playfair");
-        btnPlayfair.setBorderPainted(false);
+        btnPlayfair.setBorder(new javax.swing.border.MatteBorder(null));
         btnPlayfair.setFocusPainted(false);
         btnPlayfair.setVerifyInputWhenFocusTarget(false);
         btnPlayfair.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +73,7 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         btnVengenere.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btnVengenere.setForeground(new java.awt.Color(255, 255, 255));
         btnVengenere.setText("Vengenere");
-        btnVengenere.setBorderPainted(false);
+        btnVengenere.setBorder(new javax.swing.border.MatteBorder(null));
         btnVengenere.setFocusPainted(false);
         btnVengenere.setVerifyInputWhenFocusTarget(false);
         btnVengenere.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +86,7 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         btnShift.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btnShift.setForeground(new java.awt.Color(255, 255, 255));
         btnShift.setText("Shift");
-        btnShift.setBorderPainted(false);
+        btnShift.setBorder(new javax.swing.border.MatteBorder(null));
         btnShift.setFocusPainted(false);
         btnShift.setVerifyInputWhenFocusTarget(false);
         btnShift.addActionListener(new java.awt.event.ActionListener() {
@@ -106,49 +95,90 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHome.setBackground(new java.awt.Color(204, 0, 255));
+        btnHome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setText("Home");
+        btnHome.setBorderPainted(false);
+        btnHome.setFocusPainted(false);
+        btnHome.setVerifyInputWhenFocusTarget(false);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
+        btnExit.setBackground(new java.awt.Color(255, 51, 51));
+        btnExit.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("Exit");
+        btnExit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255,255,255), 2, true));
+        btnExit.setFocusPainted(false);
+        btnExit.setVerifyInputWhenFocusTarget(false);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        btnMono.setBackground(new java.awt.Color(51, 51, 255));
+        btnMono.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        btnMono.setForeground(new java.awt.Color(255, 255, 255));
+        btnMono.setText("Mono");
+        btnMono.setBorder(new javax.swing.border.MatteBorder(null));
+        btnMono.setFocusPainted(false);
+        btnMono.setVerifyInputWhenFocusTarget(false);
+        btnMono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnShift, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMono, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(101, 101, 101))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(123, 123, 123)
-                            .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42)
-                .addComponent(btnShift, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCaesar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShift, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVengenere, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMono, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPlayfair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(btnExit)
+                .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-        main.showPanel(new StartPanel(main));
-    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnCaesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaesarActionPerformed
         // TODO add your handling code here:
@@ -170,10 +200,27 @@ public class ModeSelectionPanel extends javax.swing.JPanel {
         main.showPanel(new ShiftPanel(main));
     }//GEN-LAST:event_btnShiftActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        main.showPanel(new StartPanel(main));
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnMonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonoActionPerformed
+        // TODO add your handling code here:
+        main.showPanel(new MonoPanel(main));
+    }//GEN-LAST:event_btnMonoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCaesar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnMono;
     private javax.swing.JButton btnPlayfair;
     private javax.swing.JButton btnShift;
     private javax.swing.JButton btnVengenere;
